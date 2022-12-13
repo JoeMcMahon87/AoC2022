@@ -59,7 +59,7 @@ def move_rope(head, tail, rope_length):
         tail_x = tail[i][0]
         tail_y = tail[i][1]
         if not found:
-            print(f"Move part {i} of rope")
+            #print(f"Move part {i} of rope")
             if cur[0] < tail[i][0]:
                 tail_x -= 1
             elif cur[0] > tail[i][0]:
@@ -79,11 +79,11 @@ def move_rope(head, tail, rope_length):
                 max_y = tail_y
 
             tail[i] = (tail_x, tail_y)
-        else:
-            print(f"Rope part {i} stays")
+#        else:
+#            print(f"Rope part {i} stays")
         cur = tail[i]
 
-    print_rope(head, tail, rope_length)
+    #print_rope(head, tail, rope_length)
     visited.add((tail[rope_length][0], tail[rope_length][1]))
 
 def print_rope(head, tail, rope_length):
@@ -139,7 +139,6 @@ def part_2(data):
         tail[i] = (1000, 1000)
 
     for line in data:
-        print_rope((head_x, head_y), tail, rope_length)
         directions = line.split(" ")
         if directions[0] == 'U':
             for i in range(0, int(directions[1])):
@@ -158,6 +157,7 @@ def part_2(data):
                 head_x += 1
                 move_rope((head_x, head_y), tail, rope_length)
 
+    print_rope((head_x, head_y), tail, rope_length)
     return len(visited)
 
 if __name__ == "__main__":
